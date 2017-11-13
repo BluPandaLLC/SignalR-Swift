@@ -13,4 +13,17 @@ public enum ConnectionState : Int {
     case connected
     case reconnecting
     case disconnected
+    
+    public func description() -> String {
+        switch self {
+        case .connecting:
+            return "Connecting"
+        case .connected:
+            return "Connected"
+        case .reconnecting:
+            return "Reconnecting"
+        case .disconnected:
+            return "Disconnected"
+        }
+    }
 }

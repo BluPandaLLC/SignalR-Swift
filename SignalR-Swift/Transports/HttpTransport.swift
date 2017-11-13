@@ -68,9 +68,9 @@ public class HttpTransport: ClientTransportProtocol {
             case .success(let result):
                 connection.didReceiveData(data: result)
 
-                if let handler = completionHandler {
-                    handler(result, nil)
-                }
+//                if let handler = completionHandler {
+//                    handler(result, nil)
+//                }
             case .failure(let error):
                 connection.didReceiveError(error: error)
 

@@ -51,9 +51,9 @@ public class HttpTransport: ClientTransportProtocol {
         let url = connection.url.appending("send")
 
         let parameters = self.getConnectionParameters(connection: connection, connectionData: connectionData)
+        let originalRequest = try! URLRequest(url: url, method: .get, headers: nil)
+        let encodedURLRequest = try! URLEncoding.default.encode(originalRequest, with: parameters)
 
-        let encodedRequest = connection.sessionManager.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-        
         var requestParams = [String: Any]()
 
         if let dataString = data as? String {
@@ -62,7 +62,7 @@ public class HttpTransport: ClientTransportProtocol {
             requestParams = dataDict
         }
         
-        let request = connection.getRequest(url: encodedRequest.request!.url!.absoluteString, httpMethod: .post, encoding: URLEncoding.httpBody, parameters: requestParams)
+        let request = connection.getRequest(url: encodedURLRequest.url!.absoluteString, httpMethod: .post, encoding: URLEncoding.httpBody, parameters: requestParams)
         request.validate().responseJSON { (response: DataResponse<Any>) in
             switch response.result {
             case .success(let result):

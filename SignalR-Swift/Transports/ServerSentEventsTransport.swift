@@ -67,7 +67,6 @@ public class ServerSentEventsTransport: HttpTransport {
     
     // MARK: - SSE Transport
     
-    private let buffer = ChunkBuffer()
     
     private func open(connection: ConnectionProtocol, connectionData: String?, isReconnecting: Bool) {
         var parameters = connection.queryString ?? [:]
@@ -89,9 +88,10 @@ public class ServerSentEventsTransport: HttpTransport {
             self?.sseQueue.async { [weak connection] in
                 guard let strongSelf = self, let strongConnection = connection else { return }
                 
-                strongSelf.buffer.append(data: data)
+                let buffer = ChunkBuffer()
+                buffer.append(data: data)
                 
-                while let line = strongSelf.buffer.readLine() {
+                while let line = buffer.readLine() {
                     guard let message = ServerSentEvent.tryParse(line: line) else { continue }
                     DispatchQueue.main.async { strongSelf.process(message: message, connection: strongConnection) }
                 }

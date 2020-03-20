@@ -11,10 +11,8 @@
 		563B87161F1FA11100D75CEF /* ServerSentEventsTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B87151F1FA11100D75CEF /* ServerSentEventsTransport.swift */; };
 		568A77191F223CB2004F5D1C /* ChunkBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A77181F223CB2004F5D1C /* ChunkBuffer.swift */; };
 		568A771B1F223CF0004F5D1C /* ServerSentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A771A1F223CF0004F5D1C /* ServerSentEvent.swift */; };
-		9E88C67D2425057300185D05 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E88C67C2425057300185D05 /* Package.swift */; };
 		9E88C680242517C800185D05 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9E88C67F242517C800185D05 /* Alamofire */; };
 		9E88C683242517DB00185D05 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 9E88C682242517DB00185D05 /* Starscream */; };
-		9E88C6862425495D00185D05 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 9E88C6852425495D00185D05 /* README.md */; };
 		AA049197DB8438E88C7B3D5D /* Pods_SignalR_SwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 291C54976E982A542BA4B4C3 /* Pods_SignalR_SwiftTests.framework */; };
 		C91154631E24113F007C0DD9 /* WebSocketTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91154621E24113F007C0DD9 /* WebSocketTransport.swift */; };
 		C91154661E241239007C0DD9 /* WebSocketConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91154651E241239007C0DD9 /* WebSocketConnectionInfo.swift */; };
@@ -63,8 +61,8 @@
 		568A77181F223CB2004F5D1C /* ChunkBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChunkBuffer.swift; path = "SignalR-Swift/Transports/ServerSentEvents/ChunkBuffer.swift"; sourceTree = SOURCE_ROOT; };
 		568A771A1F223CF0004F5D1C /* ServerSentEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ServerSentEvent.swift; path = "SignalR-Swift/Transports/ServerSentEvents/ServerSentEvent.swift"; sourceTree = SOURCE_ROOT; };
 		65B59CFA9FAF15B46BDCDEC1 /* Pods-SignalR-SwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalR-SwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignalR-SwiftTests/Pods-SignalR-SwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9E88C67C2425057300185D05 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		9E88C6852425495D00185D05 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		9E88C687242559CC00185D05 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		B5E080DF752A22D635CE38CF /* Pods-SignalR-SwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalR-SwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalR-SwiftTests/Pods-SignalR-SwiftTests.release.xcconfig"; sourceTree = "<group>"; };
 		B9B048FC932F5933F9447DCE /* Pods-SignalRSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalRSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignalRSwift/Pods-SignalRSwift.release.xcconfig"; sourceTree = "<group>"; };
 		C91154621E24113F007C0DD9 /* WebSocketTransport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketTransport.swift; sourceTree = "<group>"; };
@@ -183,8 +181,8 @@
 		C9330B1E1E1FE59A00B1F2D5 = {
 			isa = PBXGroup;
 			children = (
+				9E88C687242559CC00185D05 /* Package.swift */,
 				9E88C6852425495D00185D05 /* README.md */,
-				9E88C67C2425057300185D05 /* Package.swift */,
 				C9330B2A1E1FE59A00B1F2D5 /* SignalR-Swift */,
 				C9330B351E1FE59A00B1F2D5 /* SignalR-SwiftTests */,
 				C9330B291E1FE59A00B1F2D5 /* Products */,
@@ -425,7 +423,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E88C6862425495D00185D05 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,7 +529,6 @@
 				C9E1CA081E1FFB0C00335B1E /* ConnectionProtocol.swift in Sources */,
 				C91154681E243082007C0DD9 /* ReceivedMessage.swift in Sources */,
 				C9FC2D991E23BC600027FE59 /* ConnectionDelegate.swift in Sources */,
-				9E88C67D2425057300185D05 /* Package.swift in Sources */,
 				C91154751E256721007C0DD9 /* HubProxy.swift in Sources */,
 				C91154631E24113F007C0DD9 /* WebSocketTransport.swift in Sources */,
 				C911547B1E256F98007C0DD9 /* HubInvocation.swift in Sources */,

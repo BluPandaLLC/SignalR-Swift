@@ -10,9 +10,9 @@
 import PackageDescription
 
 let package = Package(
-    name: "SignalR-Swift",
+    name: "SignalRSwift",
     products: [
-        .library(name: "SignalR-Swift", targets: ["SignalR-Swift"]),
+        .library(name: "SignalRSwift", targets: ["SignalRSwift"]),
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.4")

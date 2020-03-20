@@ -1,3 +1,4 @@
+// swift-tools-version:5.1
 //
 //  Package.swift
 //  SignalRSwift
@@ -9,16 +10,16 @@
 import PackageDescription
 
 let package = Package(
-    name: "BPApi",
+    name: "SignalR-Swift",
     products: [
-        .library(name: "BPApi", targets: ["BPApi"]),
+        .library(name: "SignalR-Swift", targets: ["SignalR-Swift"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/BluPandaLLC/SignalR-Swift.git", from: "2.0.0")
-            .package(url: "https://github.com/ReactiveCocoa/ReactiveSwift.git", .exact("5.0.1"))
+        .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.4")
+            .package(url: "https://github.com/daltoniam/Starscream.git", from: "4.0.0")
     ],
     targets: [
-        .target(name: "BPApi", dependencies: [], path: "")
+        .target(name: "SignalR-Swift", dependencies: [], path: "SignalR-Swift")
     ],
     swiftLanguageVersions: [.v5]
 )

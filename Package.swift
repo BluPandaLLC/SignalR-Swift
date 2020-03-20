@@ -16,10 +16,10 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/Alamofire/Alamofire", from: "5.0.4")
-            .package(url: "https://github.com/daltoniam/Starscream.git", from: "4.0.0")
+        .package(url: "https://github.com/daltoniam/Starscream.git", from: "4.0.0")
     ],
     targets: [
-        .target(name: "SignalR-Swift", dependencies: [], path: "SignalR-Swift")
+        .target(name: "SignalR-Swift", dependencies: ["Alamofire", "Starscream"])
     ],
     swiftLanguageVersions: [.v5]
 )

@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import os.log
 
 public class HubConnection: Connection, HubConnectionProtocol {
 
@@ -19,6 +20,8 @@ public class HubConnection: Connection, HubConnectionProtocol {
                 queryString: [String: String]? = nil,
                 sessionManager: SessionManager = .default,
                 useDefault: Bool = true) {
+        os_log(.debug, "🥎🥎🥎 initing hub proxy %@", url)
+
         super.init(withUrl: HubConnection.getUrl(url: url, useDefault: useDefault),
                    queryString: queryString,
                    sessionManager: sessionManager)
@@ -79,6 +82,7 @@ public class HubConnection: Connection, HubConnectionProtocol {
 
     override public func didReceiveData(data: Any) {
         guard let dict = data as? [String: Any]  else { return }
+        print("🥎🥎🥎 \(dict)")
         
         if dict["I"] != nil {
             let result = HubResult(jsonObject: dict)

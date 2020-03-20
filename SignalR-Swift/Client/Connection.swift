@@ -93,6 +93,7 @@ public class Connection: ConnectionProtocol {
     }
 
     public func start(transport: ClientTransportProtocol) {
+        print("🥎🥎🥎 starting: \(url)")
         if !self.changeState(oldState: .disconnected, toState: .connecting) {
             return
         }
@@ -104,6 +105,7 @@ public class Connection: ConnectionProtocol {
     }
 
     func negotiate(transport: ClientTransportProtocol) {
+        print("🥎🥎🥎 negotiating: \(url)")
         self.connectionData = self.onSending()
 
         transport.negotiate(connection: self, connectionData: self.connectionData, completionHandler: { [unowned self] (response, error) in

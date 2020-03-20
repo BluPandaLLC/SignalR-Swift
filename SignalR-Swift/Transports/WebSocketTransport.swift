@@ -183,6 +183,8 @@ public class WebSocketTransport: HttpTransport, WebSocketDelegate {
         var timedOut = false
         var disconnected = false
 
+        print("🎲🎲🎲 \(text)")
+        
         if let connection = self.connectionInfo?.connection, let data = text.data(using: .utf8) {
             connection.processResponse(response: data, shouldReconnect: &timedOut, disconnected: &disconnected)
         }

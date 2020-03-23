@@ -10,8 +10,8 @@
 		563B87161F1FA11100D75CEF /* ServerSentEventsTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563B87151F1FA11100D75CEF /* ServerSentEventsTransport.swift */; };
 		568A77191F223CB2004F5D1C /* ChunkBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A77181F223CB2004F5D1C /* ChunkBuffer.swift */; };
 		568A771B1F223CF0004F5D1C /* ServerSentEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568A771A1F223CF0004F5D1C /* ServerSentEvent.swift */; };
-		9E88C680242517C800185D05 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9E88C67F242517C800185D05 /* Alamofire */; };
-		9E88C683242517DB00185D05 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 9E88C682242517DB00185D05 /* Starscream */; };
+		9E88C6942426AA3A00185D05 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 9E88C6932426AA3A00185D05 /* Starscream */; };
+		9E88C6972426AA6700185D05 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 9E88C6962426AA6700185D05 /* Alamofire */; };
 		C91154631E24113F007C0DD9 /* WebSocketTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91154621E24113F007C0DD9 /* WebSocketTransport.swift */; };
 		C91154661E241239007C0DD9 /* WebSocketConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91154651E241239007C0DD9 /* WebSocketConnectionInfo.swift */; };
 		C91154681E243082007C0DD9 /* ReceivedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91154671E243082007C0DD9 /* ReceivedMessage.swift */; };
@@ -96,8 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E88C680242517C800185D05 /* Alamofire in Frameworks */,
-				9E88C683242517DB00185D05 /* Starscream in Frameworks */,
+				9E88C6942426AA3A00185D05 /* Starscream in Frameworks */,
+				9E88C6972426AA6700185D05 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,8 +311,8 @@
 			);
 			name = SignalRSwift;
 			packageProductDependencies = (
-				9E88C67F242517C800185D05 /* Alamofire */,
-				9E88C682242517DB00185D05 /* Starscream */,
+				9E88C6932426AA3A00185D05 /* Starscream */,
+				9E88C6962426AA6700185D05 /* Alamofire */,
 			);
 			productName = "SignalR-Swift";
 			productReference = C9330B281E1FE59A00B1F2D5 /* SignalRSwift.framework */;
@@ -370,8 +370,8 @@
 			);
 			mainGroup = C9330B1E1E1FE59A00B1F2D5;
 			packageReferences = (
-				9E88C67E242517C800185D05 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				9E88C681242517DB00185D05 /* XCRemoteSwiftPackageReference "Starscream" */,
+				9E88C6922426AA3A00185D05 /* XCRemoteSwiftPackageReference "Starscream" */,
+				9E88C6952426AA6700185D05 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = C9330B291E1FE59A00B1F2D5 /* Products */;
 			projectDirPath = "";
@@ -676,34 +676,34 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9E88C67E242517C800185D05 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.0;
-			};
-		};
-		9E88C681242517DB00185D05 /* XCRemoteSwiftPackageReference "Starscream" */ = {
+		9E88C6922426AA3A00185D05 /* XCRemoteSwiftPackageReference "Starscream" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/daltoniam/Starscream.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.0;
+				minimumVersion = 4.0.0;
+			};
+		};
+		9E88C6952426AA6700185D05 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9E88C67F242517C800185D05 /* Alamofire */ = {
+		9E88C6932426AA3A00185D05 /* Starscream */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 9E88C67E242517C800185D05 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		9E88C682242517DB00185D05 /* Starscream */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9E88C681242517DB00185D05 /* XCRemoteSwiftPackageReference "Starscream" */;
+			package = 9E88C6922426AA3A00185D05 /* XCRemoteSwiftPackageReference "Starscream" */;
 			productName = Starscream;
+		};
+		9E88C6962426AA6700185D05 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E88C6952426AA6700185D05 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

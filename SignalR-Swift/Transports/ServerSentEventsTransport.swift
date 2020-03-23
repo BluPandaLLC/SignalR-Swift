@@ -84,19 +84,25 @@ public class ServerSentEventsTransport: HttpTransport {
                               parameters: parameters,
                               timeout: 240,
                               headers: ["Connection": "Keep-Alive"])
-        .stream { [weak self] data in
-            self?.sseQueue.async { [weak connection] in
-                guard let strongSelf = self, let strongConnection = connection else { return }
-                
-                let buffer = ChunkBuffer()
-                buffer.append(data: data)
-                
-                while let line = buffer.readLine() {
-                    guard let message = ServerSentEvent.tryParse(line: line) else { continue }
-                    DispatchQueue.main.async { strongSelf.process(message: message, connection: strongConnection) }
-                }
-            }
-        }.validate().response() { [weak self, weak connection] dataResponse in
+//        .stream { [weak self] data in
+//            self?.sseQueue.async { [weak connection] in
+//                guard let strongSelf = self, let strongConnection = connection else { return }
+//                
+//                let buffer = ChunkBuffer()
+//                buffer.append(data: data)
+//                
+//                while let line = buffer.readLine() {
+//                    guard let message = ServerSentEvent.tryParse(line: line) else {
+//                        continue
+//                    }
+//                    DispatchQueue.main.async {
+//                        strongSelf.process(message: message, connection: strongConnection)
+//                    }
+//                }
+//            }
+//        }
+        .validate()
+        .response() { [weak self, weak connection] dataResponse in
             guard let strongSelf = self, let strongConnection = connection else { return }
             
             strongSelf.cancelTimeoutOperation()

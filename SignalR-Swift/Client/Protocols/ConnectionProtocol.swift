@@ -24,7 +24,7 @@ public protocol ConnectionProtocol: class {
     var state: ConnectionState { get }
     var transport: ClientTransportProtocol? { get }
     var headers: HTTPHeaders { get set }
-    var sessionManager: SessionManager { get }
+    var sessionManager: Session { get }
     var webSocketAllowsSelfSignedSSL: Bool { get set }
 
     func onSending() -> String?

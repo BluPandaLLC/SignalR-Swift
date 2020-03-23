@@ -27,20 +27,36 @@ public class HttpTransport: ClientTransportProtocol {
         let parameters = self.getConnectionParameters(connection: connection, connectionData: connectionData)
 
         let encodedRequest = connection.getRequest(url: url, httpMethod: .get, encoding: URLEncoding.default, parameters: parameters, timeout: 30.0)
-
-        encodedRequest.validate().responseJSON { (response: DataResponse<Any>) in
-            switch response.result {
-            case .success(let result):
-                if let json = result as? [String: Any] {
-                    completionHandler?(NegotiationResponse(jsonObject: json), nil)
+        
+        encodedRequest
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let result):
+                    if let json = result as? [String: Any] {
+                        completionHandler?(NegotiationResponse(jsonObject: json), nil)
+                    }
+                    else {
+                        completionHandler?(nil, AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength))
+                    }
+                case .failure(let error):
+                    completionHandler?(nil, error)
                 }
-                else {
-                    completionHandler?(nil, AFError.responseSerializationFailed(reason: .inputDataNil))
-                }
-            case .failure(let error):
-                completionHandler?(nil, error)
-            }
         }
+
+//        encodedRequest.validate().responseJSON { (response: DataResponse<Any>) in
+//            switch response.result {
+//            case .success(let result):
+//                if let json = result as? [String: Any] {
+//                    completionHandler?(NegotiationResponse(jsonObject: json), nil)
+//                }
+//                else {
+//                    completionHandler?(nil, AFError.responseSerializationFailed(reason: .inputDataNil))
+//                }
+//            case .failure(let error):
+//                completionHandler?(nil, error)
+//            }
+//        }
     }
 
     public func start(connection: ConnectionProtocol, connectionData: String?, completionHandler: ((Any?, Error?) -> ())?) {
@@ -49,13 +65,13 @@ public class HttpTransport: ClientTransportProtocol {
 
     public func send(connection: ConnectionProtocol, data: Any, connectionData: String?, completionHandler: ((Any?, Error?) -> ())?) {
         let url = connection.url.appending("send")
-
+        
         let parameters = self.getConnectionParameters(connection: connection, connectionData: connectionData)
         let originalRequest = try! URLRequest(url: url, method: .get, headers: nil)
         let encodedURLRequest = try! URLEncoding.default.encode(originalRequest, with: parameters)
-
+        
         var requestParams = [String: Any]()
-
+        
         if let dataString = data as? String {
             requestParams["data"] = dataString
         } else if let dataDict = data as? [String: Any] {
@@ -63,23 +79,41 @@ public class HttpTransport: ClientTransportProtocol {
         }
         
         let request = connection.getRequest(url: encodedURLRequest.url!.absoluteString, httpMethod: .post, encoding: URLEncoding.httpBody, parameters: requestParams)
-        request.validate().responseJSON { (response: DataResponse<Any>) in
-            switch response.result {
-            case .success(let result):
-                connection.didReceiveData(data: result)
-
-//                if let handler = completionHandler {
-//                    handler(result, nil)
-//                }
-            case .failure(let error):
-                connection.didReceiveError(error: error)
-
-                if let handler = completionHandler {
-                    handler(nil, error)
+        
+        request
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                case .success(let result):
+                    connection.didReceiveData(data: result)
+                    
+                case .failure(let error):
+                    connection.didReceiveError(error: error)
+                    
+                    if let handler = completionHandler {
+                        handler(nil, error)
+                    }
                 }
-            }
         }
     }
+        
+//        request.validate().responseJSON { (response: DataResponse<Any>) in
+//            switch response.result {
+//            case .success(let result):
+//                connection.didReceiveData(data: result)
+//
+////                if let handler = completionHandler {
+////                    handler(result, nil)
+////                }
+//            case .failure(let error):
+//                connection.didReceiveError(error: error)
+//
+//                if let handler = completionHandler {
+//                    handler(nil, error)
+//                }
+//            }
+//        }
+//    }
 
     func completeAbort() {
         self.startedAbort = true

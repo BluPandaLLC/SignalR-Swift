@@ -688,8 +688,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.4;
+				kind = exactVersion;
+				version = 4.8.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

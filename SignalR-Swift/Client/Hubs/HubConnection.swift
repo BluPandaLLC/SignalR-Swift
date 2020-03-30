@@ -18,7 +18,7 @@ public class HubConnection: Connection, HubConnectionProtocol {
     
     public init(withUrl url: String,
                 queryString: [String: String]? = nil,
-                sessionManager: Session = .default,
+                sessionManager: SessionManager = .default,
                 useDefault: Bool = true) {
         os_log(.debug, "🥎🥎🥎 initing hub proxy %@", url)
 

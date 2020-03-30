@@ -44,7 +44,7 @@ public class Connection: ConnectionProtocol {
     public var headers = HTTPHeaders()
     public var keepAliveData: KeepAliveData?
     public var webSocketAllowsSelfSignedSSL = false
-    public internal(set) var sessionManager: Session
+    public internal(set) var sessionManager: SessionManager
 
     public var transport: ClientTransportProtocol?
     public var transportConnectTimeout = 0.0
@@ -80,7 +80,7 @@ public class Connection: ConnectionProtocol {
         return connection!.state == .reconnecting
     }
 
-    public init(withUrl url: String, queryString: [String: String]? = nil, sessionManager: Session = .default) {
+    public init(withUrl url: String, queryString: [String: String]? = nil, sessionManager: SessionManager = .default) {
         self.url = url.hasSuffix("/") ? url : url.appending("/")
         self.queryString = queryString
         self.sessionManager = sessionManager
@@ -318,7 +318,7 @@ public class Connection: ConnectionProtocol {
         var globalHeaders = self.headers
         globalHeaders["User-Agent"] = self.createUserAgentString(client: "SignalR.Client.iOS")
 
-        for (httpHeader, value) in headers.dictionary {
+        for (httpHeader, value) in headers {
             globalHeaders[httpHeader] = value
         }
 

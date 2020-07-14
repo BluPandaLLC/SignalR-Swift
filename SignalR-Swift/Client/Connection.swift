@@ -342,7 +342,7 @@ public class Connection: ConnectionProtocol {
         #if os(iOS) || os(macOS) || os(tvOS)
         let userAgentString = "\(client)/\(self.assemblyVersion!) (\(UIDevice.current.localizedModel) \(UIDevice.current.systemVersion))"
         #elseif os(watchOS)
-            let userAgentString = "\(client)/\(self.assemblyVersion!) (\(UIDevice.current.localizedModel) \(WKInterfaceDevice.current.systemVersion))"
+            let userAgentString = "\(client)/\(self.assemblyVersion!) (\(WKInterfaceDevice.current().localizedModel) \(WKInterfaceDevice.current().systemVersion))"
         #else
             let userAgentString = ""
         #endif

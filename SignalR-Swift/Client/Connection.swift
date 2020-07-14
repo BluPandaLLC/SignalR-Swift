@@ -7,7 +7,12 @@
 //
 
 import Foundation
+#if os(iOS) || os(macOS) || os(tvOS)
 import UIKit
+#endif
+#if os(watchOS)
+import WatchKit
+#endif
 import Alamofire
 
 public typealias ConnectionStartedClosure = (() -> ())
@@ -334,7 +339,15 @@ public class Connection: ConnectionProtocol {
             self.assemblyVersion = Version(major: 2, minor: 0)
         }
 
-        return "\(client)/\(self.assemblyVersion!) (\(UIDevice.current.localizedModel) \(UIDevice.current.systemVersion))"
+        #if os(iOS) || os(macOS) || os(tvOS)
+        let userAgentString = "\(client)/\(self.assemblyVersion!) (\(UIDevice.current.localizedModel) \(UIDevice.current.systemVersion))"
+        #elseif os(watchOS)
+            let userAgentString = "\(client)/\(self.assemblyVersion!) (\(UIDevice.current.localizedModel) \(WKInterfaceDevice.current.systemVersion))"
+        #else
+            let userAgentString = ""
+        #endif
+        
+        return userAgentString
     }
 
     public func processResponse(response: Data, shouldReconnect: inout Bool, disconnected: inout Bool) {

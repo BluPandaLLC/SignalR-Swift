@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import os.log
 
 public class HubConnection: Connection, HubConnectionProtocol {
 
@@ -20,7 +19,7 @@ public class HubConnection: Connection, HubConnectionProtocol {
                 queryString: [String: String]? = nil,
                 sessionManager: SessionManager = .default,
                 useDefault: Bool = true) {
-        os_log(.debug, "🥎🥎🥎 initing hub proxy %@", url)
+        print("🥎🥎🥎 initing hub proxy \(url)")
 
         super.init(withUrl: HubConnection.getUrl(url: url, useDefault: useDefault),
                    queryString: queryString,
